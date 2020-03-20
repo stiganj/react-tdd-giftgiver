@@ -1,13 +1,13 @@
 pipeline {
-	agent: any
+	agent any
 	stages {
 		stage('Build'){
-			step {
+			steps {
 				echo "Inside Build"
 			}
 		}
 		stage('Test') {
-			step {
+			steps {
         			echo "Inside Test"
         			dir('/Users/selmatiganj/react-tdd-class/giftgiver') {
             				pwd()
@@ -16,7 +16,7 @@ pipeline {
     			}
 		}
     		stage('Deploy'){
-			step {
+			steps {
         			echo "Inside Deploy"
 			}
     		}
