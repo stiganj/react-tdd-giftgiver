@@ -1,23 +1,23 @@
 pipeline {
 	agent any
+	environment { 
+        	CI = 'true'
+    	}	
 	stages {
 		stage('Build'){
 			steps {
-				echo "Inside Build"
+				sh 'npm install'	
 			}
 		}
 		stage('Test') {
 			steps {
-        			echo "Inside Test"
-        			dir('/Users/selmatiganj/react-tdd-class/giftgiver') {
-            				pwd()
-            				sh 'CI=true npm test'
-        			}
+            			sh 'npm test'
     			}
 		}
     		stage('Deploy'){
 			steps {
-        			echo "Inside Deploy"
+				sh 'npm run build'
+				sh 'npm start &'
 			}
     		}
 	}
